@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Continents</title>
+</head>
+<body>
+<form method="post" action="/home/insert">
+    Country Name <input type="text" size="20" name="countryName" value="나라 이름"><br>
+    <!--City Name <input type="text" size="20" name="cityName" value="도시 이름"><br>-->
+    <!--도시 추가-->
+    Continent <br>
+    <input type="radio" name="continentId" value="1">Asia<br>
+    <input type="radio" name="continentId" value="2">Africa<br>
+    <input type="radio" name="continentId" value="3">North America<br>
+    <input type="radio" name="continentId" value="4">South America<br>
+    <input type="radio" name="continentId" value="5">Europe<br>
+    <input type="radio" name="continentId" value="6">Oceania<br>
+    <input type="submit" value="제출">
+</form>
+<br><br>
+
+<dl>
+    <tr th:each="continent : ${data}">
+        <a th:href="@{/home/read/{id}(id=${continent.id})}">
+            <td th:text="${continent.id}">id</td>
+            <br>
+        </a>
+        <a th:href="@{/home/read/{name}(name=${continent.continentName})}">
+            <td th:text="${continent.continentName}">name</td>
+        </a>
+        <br><br>
+    </tr>
+</dl>
+
+</body>
+</html>
