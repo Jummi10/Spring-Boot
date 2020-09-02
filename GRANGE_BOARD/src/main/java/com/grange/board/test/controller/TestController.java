@@ -26,4 +26,41 @@ public class TestController {
 		return "test123";
 	}
 	
+	// POST, GET
+	@RequestMapping(value = "/param")
+	public String paramFromHttpServletRequest(
+			HttpServletRequest req) {
+		
+		String param1 = req.getParameter("param1");
+		String param2 = req.getParameter("param2");
+		
+		System.out.println("param1 = " + param1);
+		System.out.println("param2 = " + param2);
+		
+		return "200 OK";
+	}
+
+	@RequestMapping(value = "/param2")
+	public String paramFromRequestParam(
+			@RequestParam(name = "param1", defaultValue = "value1") String param1,
+			@RequestParam(name = "param2", required = true) String param2) {
+		
+		System.out.println("param1 = " + param1);
+		System.out.println("param2 = " + param2);
+
+		return "200 OK";
+	}
+	
+	@RequestMapping(value = "/add")
+	public int adder(
+			@RequestParam(name = "operand1", required = true) int op1,
+			@RequestParam(name = "operand2", required = true) int op2) {
+		
+		int result = op1 + op2;
+		
+		System.out.println("op1 = " + op1);
+		System.out.println("op2 = " + op2);
+		
+		return result;
+	}
 }
