@@ -21,5 +21,17 @@ public class BoardService {
 	public List<BoardVO> getBoards() {
 		return this.boardDao.getBoards();
 	}
+	
+	public int insertBoard(BoardVO board) {
+		return this.boardDao.insertBoard(board);
+	}
+	
+	public int updateBoard(BoardVO board) {
+		return this.boardDao.updateBoard(board);
+	}
+	
+	public int deleteBoard(int id) {
+		return this.boardDao.deleteBoard(id);
+	}
 
 }

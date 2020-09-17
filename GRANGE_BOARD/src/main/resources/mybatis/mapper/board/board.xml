@@ -22,5 +22,29 @@
       FROM board
    </select>
    
+   <!-- 만들어진 행이 몇 행인지만 반환해서 resultType X -->
+   <insert id="insertBoard" parameterType="BoardVO">
+   		INSERT INTO board (
+   			title,
+   			content,
+   			reg_dtt,
+   			reg_id	)
+   		VALUES (	<!-- vo의 key 값 그대로 -->
+   			#{title},
+   			#{content},
+   			now(),
+   			#{regId}	)
+   </insert>
+   
+   <update id="updateBoard" parameterType="BoardVO">
+   		UPDATE board
+   		SET title = #{title}, content = #{content}
+   		WHERE id = #{id}
+   </update>
+   
+   <delete id="deleteBoard" parameterType="map">
+   		DELETE FROM board
+   		WHERE id = #{id}
+   </delete>
 
 </mapper>

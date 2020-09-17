@@ -33,4 +33,21 @@ public class BoardDao {
 		return this.sqlSession.selectList("board.getBoards");
 	}
 	
+	// returnType = 몇 개의 행에 영향을 미쳤는가
+	// select 제외한 insert, update, delete
+	public int insertBoard(BoardVO board) {
+		return this.sqlSession.insert("board.insertBoard", board);
+	}
+	
+	public int updateBoard(BoardVO board) {
+		return this.sqlSession.update("board.updateBoard", board);
+	}
+	
+	public int deleteBoard(int id) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("id", id);
+		
+		return this.sqlSession.delete("board.deleteBoard", param);
+	}
+	
 }
