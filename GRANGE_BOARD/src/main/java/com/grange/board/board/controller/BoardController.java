@@ -3,6 +3,8 @@ package com.grange.board.board.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -18,30 +20,13 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 
-	@RequestMapping(value = "/board", method = RequestMethod.GET)
+	@GetMapping(value = "/board/{id}")
 	public BoardVO getBoard(
-			@RequestParam(name = "id", required = true) int id) {
+			@PathVariable(name = "id", required = true) int id) {
 		return this.boardService.getBoard(id);
 	}
-	
-	@RequestMapping(value = "/test")
-	public BoardVO getTest(
-			@RequestParam(name = "id", required = true) int id,
-			@RequestParam(name = "title", required = true) String title,
-			@RequestParam(name = "content", required = true) String content,
-			@RequestParam(name = "regId", required = true) String regId
-			) {
 		
-		BoardVO board = new BoardVO();
-		board.setId(id);
-		board.setTitle(title);
-		board.setContent(content);
-		board.setRegId(regId);
-		
-		return board;
-	}
-	
-	@RequestMapping(value = "/boards")
+	@GetMapping(value = "/boards") // read
 	public List<BoardVO> getBoards() {
 		return this.boardService.getBoards();
 	}

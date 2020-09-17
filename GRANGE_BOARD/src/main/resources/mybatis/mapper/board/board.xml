@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="board">
+
+   <select id="getBoard" resultType="BoardVO" parameterType="map">
+		SELECT id as id, 
+			title as title, 
+			content as content, 
+			reg_dtt as regDtt, 
+			reg_id as regId
+		FROM board
+		WHERE id = #{id}
+   </select>
+  
+   <select id="getBoards" resultType="BoardVO">
+      SELECT id as id
+         , title as title
+         , content as content
+         , reg_dtt as regDtt
+         , reg_id as regId
+      FROM board
+   </select>
+   
+
+</mapper>

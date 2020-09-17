@@ -1,68 +1,36 @@
 package com.grange.board.board.dao;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import org.apache.ibatis.session.SqlSession;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 import com.grange.board.board.vo.BoardVO;
 
 @Repository
 public class BoardDao {
+	
+	@Autowired
+	@Qualifier("sqlSessionTemplate")
+	protected SqlSession sqlSession;
 
 	// id를 넣으면 board 하나 전체를 가져온다.
 	public BoardVO getBoard(int id) {
 	      
-      BoardVO board = new BoardVO();
-      
-      if(id == 1) {
-         board.setId(1);
-         board.setTitle("제목1");
-         board.setContent("내용1");
-         board.setRegId("dkdlrja");
-      }
-      else if(id == 2) {
-         board.setId(2);
-         board.setTitle("제목2");
-         board.setContent("내용2");
-         board.setRegId("cmmn1234");
-      }
-      else {
-         board = null;
-      }
-      
-      return board;
+     Map<String, Object> param = new HashMap<String, Object>();
+     param.put("id", id);
+     
+     // "query mapper(board.xml) namespace.id", parameter
+     return this.sqlSession.selectOne("board.getBoard", param);
    }
 	
 	public List<BoardVO> getBoards() {
-	      
-		List<BoardVO> boards = new ArrayList<BoardVO>();
-		  
-		BoardVO board = new BoardVO();
-		board.setId(1);
-		board.setTitle("제목1");
-		board.setContent("내용1");
-		board.setRegId("dkdlrja");      
-		boards.add(board);
-		  
-		BoardVO board2 = new BoardVO();
-		board2.setId(2);
-		board2.setTitle("제목2");
-		board2.setContent("내용2");
-		board2.setRegId("cmmn1234");
-		boards.add(board2);
-		  
-		return boards;
+		return this.sqlSession.selectList("board.getBoards");
 	}
 	
-	public BoardVO getTest() {
-		
-		BoardVO board = new BoardVO();
-		board.setId(1);
-		board.setTitle("제목11");
-		board.setContent("내용11");
-		board.setRegId("박정미");
-		
-		return board;
-	}
 }

@@ -1,0 +1,25 @@
+2020-09-16 21:38:13 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "INSERT INTO BOARD (
+TITLE,
+CONTENT,
+REG_DTT,
+REG_ID
+)
+VALUES (
+'제목1'
+'내용1'
+NOW[*](),
+'dlwlrma'
+)"; expected "[, ::, AT, FORMAT, *, /, %, +, -, ||, ~, !~, NOT, LIKE, ILIKE, REGEXP, IS, IN, BETWEEN, AND, OR, ,, )"; SQL statement:
+insert into board (
+title,
+content,
+reg_dtt,
+reg_id
+)
+values (
+'제목1'
+'내용1'
+now(),
+'dlwlrma'
+) [42001-200]
