@@ -32,6 +32,12 @@ public class BoardController {
 		model.addAttribute("boards", boards);
 		model.addAttribute("test", "ddddddddd");
 		
+//		if(true) {	// login이 안 되어 있으면
+//			return "redirect:/user/login";
+//		}	// 모든 함수에 넣을 수 없음. -> login 공통 부분은 interceptor로
+		
+		System.out.println("BoardController::list");
+		
 		return "board/list";	// return View	// ContextConfig.class - templates/*.html
 	}
 	
