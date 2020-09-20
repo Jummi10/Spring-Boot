@@ -64,6 +64,13 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
+		<!-- custom -->
+		<dependency>
+   			<groupId>commons-codec</groupId>
+   			<artifactId>commons-codec</artifactId>
+		</dependency>
+		<!-- /custom -->
 	</dependencies>
 
 	<build>

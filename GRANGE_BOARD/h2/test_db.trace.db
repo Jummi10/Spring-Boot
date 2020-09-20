@@ -23,3 +23,38 @@ values (
 now(),
 'dlwlrma'
 ) [42001-200]
+2020-09-20 16:05:59 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "gmlgml"; SQL statement:
+insert into user(
+id, pw, nickname, use_yn
+)
+values(
+'gmlgml', '937E8D5FBB48BD4949536CD65B8D35C426B80D2F830C5C308E2CDEC422AE2244', '점미', 'Y'
+) [22018-200]
+2020-09-20 16:06:45 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "gmlgml"; SQL statement:
+insert into user(
+id, pw, nickname, use_yn
+)
+values(
+'gmlgml', '937E8D5FBB48BD4949536CD65B8D35C426B80D2F830C5C308E2CDEC422AE2244', '점미', 'Y'
+) [22018-200]
+2020-09-20 16:09:15 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "gmlgml"; SQL statement:
+insert into user(
+id, pw, nickname, use_yn
+)
+values(
+'gmlgml', '937E8D5FBB48BD4949536CD65B8D35C426B80D2F830C5C308E2CDEC422AE2244', '점미', 'Y'
+) [22018-200]
+2020-09-20 16:12:57 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "gmlgml"; SQL statement:
+insert into user(
+id, pw, nickname, use_yn
+)
+values(
+'gmlgml', '937E8D5FBB48BD4949536CD65B8D35C426B80D2F830C5C308E2CDEC422AE2244', '점미', 'Y'
+) [22018-200]
+2020-09-20 17:41:50 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "UPDATE USER[*]"; expected "., AS, SET"; SQL statement:
+update user [42001-200]
