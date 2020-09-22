@@ -26,7 +26,7 @@ public class UserController {
 	 */
 	@GetMapping(value = "/login")
 	public String loginForm() {
-		return "user/login";
+		return "pages/user/login";
 	}
 
 	/**

@@ -10,6 +10,8 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
 import com.grange.board.core.interceptor.AuthInterceptor;
 
+import nz.net.ultraq.thymeleaf.LayoutDialect;
+
 @Configuration
 public class ContextConfig implements WebMvcConfigurer {
 	
@@ -20,6 +22,7 @@ public class ContextConfig implements WebMvcConfigurer {
     public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(thymeleafTemplateResolver());
+        templateEngine.addDialect(new LayoutDialect());	// thymeleaf-dialect 활성화
         return templateEngine;
     }
 

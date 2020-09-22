@@ -38,7 +38,7 @@ public class BoardController {
 		
 		System.out.println("BoardController::list");
 		
-		return "board/list";	// return View	// ContextConfig.class - templates/*.html
+		return "pages/board/list";	// return View	// ContextConfig.class - templates/*.html
 	}
 	
 	@GetMapping(value = "/detail/{id}")
@@ -47,7 +47,7 @@ public class BoardController {
 		BoardVO board = this.boardService.getBoard(id);
 		
 		ModelAndView mav = new ModelAndView();
-		mav.setViewName("board/detail");
+		mav.setViewName("pages/board/detail");
 		mav.addObject("board", board);	//연결해주고 싶은 data
 		
 		// list에서는 view(String returnType)와 model(ModelMap) 따로 보내줬는데 여기서는 한 번에 보내줌.
@@ -56,7 +56,7 @@ public class BoardController {
 	
 	@GetMapping(value = "/write")
 	public String wrtie() {
-		return "board/write";
+		return "pages/board/write";
 	}
 	
 	@PostMapping(value = "/write")
@@ -75,7 +75,7 @@ public class BoardController {
 		BoardVO board = this.boardService.getBoard(id);
 		model.addAttribute("board", board);
 		
-		return "board/modify";
+		return "pages/board/modify";
 	}
 	
 	@PostMapping(value = "/modify")
