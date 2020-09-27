@@ -11,5 +11,16 @@
    			AND pw = #{pw}
    			AND use_yn = 'Y'
    </select>
+   
+   <insert id="insertUser" parameterType="UserVO">
+   		INSERT INTO user(
+   			id,
+   			pw,
+   			nickname	)
+   		VALUES(
+   			#{id},
+   			#{pw},
+   			#{nickname}	)
+   </insert>
 
 </mapper>

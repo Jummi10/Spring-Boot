@@ -24,4 +24,8 @@ public class UserDao {	// .xml과 연결
 		
 		return this.sqlSession.selectOne("user.getUser", param);
 	}
+	
+	public int insertUser(UserVO user) {
+		return this.sqlSession.insert("user.insertUser", user);
+	}
 }

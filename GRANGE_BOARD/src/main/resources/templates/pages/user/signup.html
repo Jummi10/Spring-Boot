@@ -6,7 +6,7 @@
 
 <div layout:fragment="content" class="container" style="margin-top:30px">
    <div class="row">
-      <form action="/user/login" method="post" style="width:100%;">
+      <form action="/user/signup" method="post" style="width:100%;">
          <div class="form-group">
             <input type="text" name="id" class="form-control" placeholder="아이디" />
          </div>
@@ -14,12 +14,12 @@
             <input type="text" name="pw" class="form-control" placeholder="패스워드" />
          </div>
          <div class="form-group">
-            <button type="submit" class="btn btn-primary btn-block">로그인</button>      
-         </div> 
+            <input type="text" name="nickname" class="form-control" placeholder="닉네임" />
+         </div>
+         <div class="form-group">
+            <button type="submit" class="btn btn-primary btn-block">회원가입</button>      
+         </div>           
       </form>
-      <div style="width:100%;">
-      	 <a th:href="@{/user/signup}"><button class="btn btn-outline-primary btn-block">회원가입</button></a>
-      </div>
    </div>
 </div>
 

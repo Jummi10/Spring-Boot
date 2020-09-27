@@ -17,4 +17,12 @@ public class UserService {
 		pw = DigestUtils.sha256Hex(pw);	// 사용자가 입력한 pw를 sha256으로 암호화, db 내 pw와 비교
 		return this.userDao.getUser(id, pw);
 	}
+	
+	public int insertUser(UserVO user) {
+		String pw = user.getPw();
+		pw = DigestUtils.sha256Hex(pw);
+		user.setPw(pw);
+		
+		return this.userDao.insertUser(user);
+	}
 }

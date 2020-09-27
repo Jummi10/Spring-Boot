@@ -38,9 +38,6 @@ public class UserController {
 	public String postLogin(UserVO user
 			, HttpServletRequest req) {	// request param 이상으로 더 많은 정보 가져올 때
 		
-//		System.out.println("id : " + user.getId());
-//		System.out.println("pw : " + user.getPw());
-		
 		String id = user.getId();
 		String pw = user.getPw();
 		
@@ -55,6 +52,25 @@ public class UserController {
 		else {	// fail
 			return "redirect:/user/login";
 		}
-
+	}
+	
+	@GetMapping(value = "/logout")
+	public String logout(HttpServletRequest req) {
+		HttpSession session = req.getSession();
+		session.invalidate();	// session.removeAttribute(HttpSessionUtils.USER_SESSION_KEY);
+		
+		return "redirect:/user/login";
+	}
+	
+	@GetMapping(value = "/signup")
+	public String signup() {
+		return "pages/user/signup";
+	}
+	
+	@PostMapping(value = "/signup")
+	public String postSignup(UserVO user) {
+		this.userService.insertUser(user);
+		
+		return "redirect:/user/login";
 	}
 }
