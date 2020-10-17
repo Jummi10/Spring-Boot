@@ -18,7 +18,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
 			throws Exception {
 		
-		System.out.println("AuthInterceptor::preHandle");
+//		System.out.println("AuthInterceptor::preHandle");
 		
 		HttpSession session = request.getSession();
 		UserVO user = (UserVO) session.getAttribute("user");
@@ -39,14 +39,14 @@ public class AuthInterceptor implements HandlerInterceptor {
 	public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler,
 			@Nullable ModelAndView modelAndView) throws Exception {
 
-		System.out.println("AuthInterceptor::postHandle");
+//		System.out.println("AuthInterceptor::postHandle");
 	}
 	
 	@Override
 	public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, 
 			@Nullable Exception ex) throws Exception {
 		
-		System.out.println("AuthInterceptor::afterCompletion");
+//		System.out.println("AuthInterceptor::afterCompletion");
 	}
 
 }

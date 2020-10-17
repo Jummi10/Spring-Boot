@@ -20,6 +20,8 @@
          , reg_dtt as regDtt
          , reg_id as regId
       FROM board
+      ORDER BY id DESC
+      LIMIT (#{page} - 1) * #{rows}, #{rows}
    </select>
    
    <!-- 만들어진 행이 몇 행인지만 반환해서 resultType X -->

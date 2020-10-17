@@ -30,8 +30,10 @@ public class BoardController {
 	}
 		
 	@GetMapping(value = "/boards") // read
-	public List<BoardVO> getBoards() {
-		return this.boardService.getBoards();
+	public List<BoardVO> getBoards(
+			@RequestParam(name = "page", defaultValue = "1") int page
+			, @RequestParam(name = "rows", defaultValue = "20") int rows) {
+		return this.boardService.getBoards(page, rows);
 	}
 	
 	@PostMapping(value = "/board") // create

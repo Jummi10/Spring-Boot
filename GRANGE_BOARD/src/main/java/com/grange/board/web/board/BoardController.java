@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.grange.board.board.service.BoardService;
@@ -27,16 +28,17 @@ public class BoardController {
 	}
 	
 	@GetMapping(value = "/list")
-	public String list(ModelMap model) { // controller가 model(service->dao)에서 가져온 데이터를 modelmap으로 view로 보내준다
-		List<BoardVO> boards = this.boardService.getBoards();
+	public String list(ModelMap model // controller가 model(service->dao)에서 가져온 데이터를 modelmap으로 view로 보내준다
+			, @RequestParam(name = "page", defaultValue = "1") int page
+			, @RequestParam(name = "rows", defaultValue = "20") int rows) {
+		
+		List<BoardVO> boards = this.boardService.getBoards(page, rows);
 		model.addAttribute("boards", boards);
-		model.addAttribute("test", "ddddddddd");
+		model.addAttribute("page", page);
 		
 //		if(true) {	// login이 안 되어 있으면
 //			return "redirect:/user/login";
 //		}	// 모든 함수에 넣을 수 없음. -> login 공통 부분은 interceptor로
-		
-		System.out.println("BoardController::list");
 		
 		return "pages/board/list";	// return View	// ContextConfig.class - templates/*.html
 	}

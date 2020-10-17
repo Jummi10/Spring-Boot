@@ -29,8 +29,12 @@ public class BoardDao {
      return this.sqlSession.selectOne("board.getBoard", param);
    }
 	
-	public List<BoardVO> getBoards() {
-		return this.sqlSession.selectList("board.getBoards");
+	public List<BoardVO> getBoards(int page, int rows) {
+		Map<String, Object> param = new HashMap<String, Object>();
+		param.put("page", page);
+		param.put("rows", rows);
+		
+		return this.sqlSession.selectList("board.getBoards", param);
 	}
 	
 	// returnType = 몇 개의 행에 영향을 미쳤는가

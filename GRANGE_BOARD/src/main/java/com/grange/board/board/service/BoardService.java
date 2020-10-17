@@ -18,8 +18,8 @@ public class BoardService {
 		return this.boardDao.getBoard(id);
 	}
 	
-	public List<BoardVO> getBoards() {
-		return this.boardDao.getBoards();
+	public List<BoardVO> getBoards(int page, int rows) {
+		return this.boardDao.getBoards(page, rows);
 	}
 	
 	public int insertBoard(BoardVO board) {
