@@ -40,7 +40,7 @@ public class BoardController {
 //			return "redirect:/user/login";
 //		}	// 모든 함수에 넣을 수 없음. -> login 공통 부분은 interceptor로
 		
-		return "pages/board/list";	// return View	// ContextConfig.class - templates/*.html
+		return "pages/board/list_ajax";	// return View	// ContextConfig.class - templates/*.html
 	}
 	
 	@GetMapping(value = "/detail/{id}")
