@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="map">
+
+   <select id="getMaps" resultType="MapVO">
+      SELECT id as id
+         , comment as comment
+         , reg_dtt as regDtt
+         , reg_id as regId
+         , latitude as latitude
+         , longitude as longitude
+      FROM map
+      WHERE use_yn = 'Y'
+      ORDER BY id DESC
+   </select>
+
+</mapper>
