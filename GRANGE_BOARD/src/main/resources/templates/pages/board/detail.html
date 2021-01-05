@@ -16,14 +16,63 @@
 				<tr>
 					<td colspan="3" th:text = "${board.content}"></td>										
 				</tr>
+				<tr>
+					<td colspan="3">
+						<div class="row">
+							<form th:action="@{/board/{id}/comment(id=${board.id})}" method="post" style="width:100%;">
+								<div class="col-sm-10 no-padding form-group" style="float:left;">
+									<input type="text" name="content" class="form-control" placeholder="댓글을 입력해 주세요." />
+								</div>
+								<div class="col-sm-2 no-padding form-group" style="float:left;">
+									<button type="submit" class="btn btn-secondary">등록</button>
+								</div>
+							</form>
+						</div>
+					</td>
+				</tr>
 			</tbody>			
+		</table>
+		<table class="table">
+			<colgroup>
+				<col width="20%" />
+				<col width="80%" />
+			</colgroup>
+			<tbody id="t-comments"></tbody>
 		</table>
 	</div>
 	<div class="row float-right">
 		<a th:href="@{/board/modify/{id}(id=${board.id})}"><button class="btn btn-primary">수정</button></a>
 		<a th:href="@{/board/delete/{id}(id=${board.id})}"><button class="btn btn-danger">삭제</button></a>
-		<a th:href="@{/board/list}"><button class="btn btn-secondary">목록</button></a>
+		<a href="/board/list"><button class="btn btn-secondary">목록</button></a>
 	</div>
+	
+	<script type="text/javascript">
+		var getComments = (boardId) => {
+			$.get(`/api/comment/board/` + boardId) // get method의 이 url이 실행됨
+			.done((response) => { // dao까지 돌고 가져와서 response에 넣어줌
+				console.log(response)
+				$('#t-comments').empty()
+				$('#commentsTmpl').tmpl(response).appendTo('#t-comments')
+				 // 아까 만든 템플릿에 가져온 response의 내용대로 만들어진 html을 t-comments에 넣겠다
+			})
+			.fail((err) => {
+				alert('에러났음')
+				console.log(err)
+			})
+		}
+		
+		$(document).ready(() => { // 모든 로딩이 끝난 후에 내용을 실행해라
+			getComments([[${board.id}]]) // controller에서 넘겨받은 thymeleaf 문법으로 가져온 object의 필드명을 ajax에서 쓰고싶을 때
+		})
+	</script>
+	
+	<script id="commentsTmpl" type="text/x-jquery-tmpl">
+		<tr>
+			<td>${regId}</td>
+			<td>${content}</td>
+		</tr>
+	</script>
+
 </div>
 
 </html>

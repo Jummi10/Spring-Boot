@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="comment">
+
+   <select id="getComments" resultType="CommentVO" parameterType="map">
+		SELECT id as id, 
+			board_id as boardId, 
+			content as content, 
+			reg_dtt as regDtt, 
+			reg_id as regId
+		FROM comment
+		WHERE board_id = #{boardId}
+			AND use_yn = 'Y'
+		ORDER BY id ASC
+   </select>
+
+   <insert id="insertComment" parameterType="CommentVO">
+   		INSERT INTO comment (
+   			board_id,
+   			content,
+   			reg_dtt,
+   			reg_id,
+   			use_yn
+   		)
+   		VALUES (
+   			#{boardId},
+   			#{content},
+   			now(),
+   			#{regId},
+   			'Y'
+   		)
+   </insert>
+   
+   <update id="updateComment" parameterType="CommentVO">
+   		UPDATE comment
+   		SET content = #{content}
+   		WHERE id = #{id}
+   </update>
+   
+   <update id="deleteComment" parameterType="Integer">
+   		UPDATE comment
+   		SET use_yn = 'N'
+   		WHERE id = #{commentId}
+   </update>
+
+</mapper>
